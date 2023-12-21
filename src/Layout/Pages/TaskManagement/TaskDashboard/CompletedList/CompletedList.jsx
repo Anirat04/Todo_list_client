@@ -10,7 +10,7 @@ const CompletedList = ({ onDrop, onRefetch }) => {
     // const [allOngoing, refetch] = useAllOngoing()
     const [allOngoing, ongoingRefetch] = useAllOngoing()
     // const onRefetch = refetch
-    const [allCompleted, refetch] = useAllCompleted()
+    const [allCompleted, completedRefetch] = useAllCompleted()
     const { user } = useContext(ProviderContext)
     const axiosSecure = useAxiosSecure()
 
@@ -35,6 +35,7 @@ const CompletedList = ({ onDrop, onRefetch }) => {
         console.log("this is item", item._id); // Log the dropped item
         try {
             const res1 = await axiosSecure.delete(`/todoList/${item._id}`)
+            const res2 = await axiosSecure.delete(`/todoList2/${item._id}`)
             console.log("res1", res1)
             const res = await axiosSecure.delete(`/ongoingList/${item._id}`)
             console.log(res.data, 'completed')
@@ -42,7 +43,7 @@ const CompletedList = ({ onDrop, onRefetch }) => {
             console.log(ongoingRes.data, 'success')
             if (ongoingRes.data.insertedId) {
                 // show success\
-                refetch()
+                completedRefetch()
                 console.log(ongoingRes.data)
                 toast.success('Task Added to Completed list', {
                     position: "bottom-right",

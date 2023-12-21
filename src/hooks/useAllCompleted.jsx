@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 const useAllCompleted = () => {
     const { user } = useContext(ProviderContext)
     const axiosSecure = useAxiosSecure()
-    const { refetch, data: allCompleted = []} = useQuery({
+    const { refetch: completedRefetch, data: allCompleted = []} = useQuery({
         queryKey: ['allCompleted', user],
         queryFn: async () => {
             const res = await axiosSecure.get(`/completedList?email=${user?.email}`)
@@ -20,7 +20,7 @@ const useAllCompleted = () => {
         },
     })
     console.log(allCompleted)
-    return [allCompleted, refetch]
+    return [allCompleted, completedRefetch]
 };
 
 export default useAllCompleted;

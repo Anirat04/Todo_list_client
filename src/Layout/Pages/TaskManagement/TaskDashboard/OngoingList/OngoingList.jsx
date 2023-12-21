@@ -4,8 +4,10 @@ import useAllOngoing from "../../../../../hooks/useAllOngoing";
 import useAxiosSecure from "../../../../../hooks/useAxiosSecure";
 import { useDrag, useDrop } from "react-dnd";
 import { toast } from "react-toastify";
+import useAllCompleted from "../../../../../hooks/useAllCompleted";
 
 const OngoingList = ({ onDrop, onRefetch }) => {
+    const [allCompleted, completedRefetch] = useAllCompleted()
     const [allOngoing, ongoingRefetch] = useAllOngoing()
     const { user } = useContext(ProviderContext)
     const axiosSecure = useAxiosSecure()
@@ -13,7 +15,7 @@ const OngoingList = ({ onDrop, onRefetch }) => {
 
     // droppable
     const [{ isOver }, drop] = useDrop(() => ({
-        accept: "TASK", // Specify the accepted drag type
+        accept: ["TASK", "Completed"], // Specify the accepted drag type
         drop: (item) => {
             console.log("Dropped item:", item); // Log the dropped item
             handleDrop(item)
@@ -31,6 +33,8 @@ const OngoingList = ({ onDrop, onRefetch }) => {
         console.log("this is item", item._id); // Log the dropped item
         try {
             const res = await axiosSecure.delete(`/todoList/${item._id}`)
+            const res2 = await axiosSecure.delete(`/todoList2/${item._id}`)
+            const res3 = await axiosSecure.delete(`/completedList/${item._id}`)
             const ongoingRes = await axiosSecure.post('/ongoingList', item)
             console.log(ongoingRes.data, 'success')
             if (ongoingRes.data.insertedId) {
@@ -49,8 +53,9 @@ const OngoingList = ({ onDrop, onRefetch }) => {
                 });
             }
             console.log(res.data);
+            console.log(res2.data);
             // Handle the result of the axios post if needed
-
+            completedRefetch()
             onRefetch()
             // Call the onDrop function after the asynchronous operation is complete
             onDrop(item);

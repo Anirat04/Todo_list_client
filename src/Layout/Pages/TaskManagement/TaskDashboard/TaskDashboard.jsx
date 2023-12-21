@@ -11,12 +11,13 @@ import useAllOngoing from "../../../../hooks/useAllOngoing";
 import DraggableTaskItem from "./DraggableTaskItem/DraggableTaskItem";
 import OngoingList from "./OngoingList/OngoingList";
 import CompletedList from "./CompletedList/CompletedList";
+import useAllCompleted from "../../../../hooks/useAllCompleted";
 
 
 const TaskDashboard = () => {
 
-
-
+    const [allCompleted, completedRefetch] = useAllCompleted()
+    const [ allOngoing, ongoingRefetch] = useAllOngoing()
     const [allTask, refetch] = useAllTask()
     const { user } = useContext(ProviderContext)
     console.log(allTask)
@@ -69,6 +70,58 @@ const TaskDashboard = () => {
         },
     }));
 
+
+    // drop from ongoing
+    // droppable
+    const [{ isOver }, drop] = useDrop(() => ({
+        accept: ["Ongoing", "Completed"], // Specify the accepted drag type
+        drop: (item) => {
+            console.log("Dropped item:", item); // Log the dropped item
+            handleDrop(item)
+            // onDrop(item);
+        },
+        collect: (monitor) => ({
+            isOver: !!monitor.isOver(),
+        }),
+    }
+    ));
+
+
+    // Define an asynchronous function
+    const handleDrop = async (item) => {
+        console.log("this is item", item._id); // Log the dropped item
+        try {
+            const res = await axiosSecure.delete(`/ongoingList/${item._id}`)
+            const res3 = await axiosSecure.delete(`/completedList/${item._id}`)
+            const ongoingRes = await axiosSecure.post('/todoList', item)
+            console.log(ongoingRes.data, 'success')
+            if (ongoingRes.data.insertedId) {
+                // show success\
+                refetch()
+                console.log(ongoingRes.data)
+                toast.success('Task Added to ToDo list', {
+                    position: "bottom-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }
+            console.log(res.data);
+            // Handle the result of the axios post if needed
+            completedRefetch()
+            ongoingRefetch()
+            // Call the onDrop function after the asynchronous operation is complete
+            // onDrop(item);
+        } catch (error) {
+            console.error("Error while posting todo:", error);
+        }
+    };
+    // console.log(onDrop);
+
     return (
         <div>
             <ToastContainer />
@@ -89,7 +142,7 @@ const TaskDashboard = () => {
                 </div>
                 <div className="flex justify-evenly">
                     {/* todolist */}
-                    <div className="bg-slate-400 w-[384px] p-5">
+                    <div ref={drop} className={`bg-slate-400 w-[384px] p-5 ${isOver ? 'bg-green-200' : ''}`}>
                         <div>
                             <h3 className="text-[22px] font-bold text-center mb-4">ToDo List</h3>
                         </div>
