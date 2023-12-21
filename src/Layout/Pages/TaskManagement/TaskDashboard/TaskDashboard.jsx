@@ -46,11 +46,14 @@ const DraggableTaskItem = ({ task }) => {
 };
 
 // OngoingList Component
-const OngoingList = ({ onDrop }) => {
+const OngoingList = ({ onDrop, onRefetch }) => {
+    const { user } = useContext(ProviderContext)
+    const axiosSecure = useAxiosSecure()
     const [{ isOver }, drop] = useDrop(() => ({
         accept: "TASK", // Specify the accepted drag type
         drop: (item) => {
             console.log("Dropped item:", item); // Log the dropped item
+            handleDrop(item)
             onDrop(item);
         },
         collect: (monitor) => ({
@@ -58,6 +61,23 @@ const OngoingList = ({ onDrop }) => {
         }),
     }
     ));
+
+    
+    // Define an asynchronous function
+    const handleDrop = async (item) => {
+        console.log("this is item", item._id); // Log the dropped item
+        try {
+            const res = await axiosSecure.delete(`/todoList/${item._id}`)
+            console.log(res.data);
+            // Handle the result of the axios post if needed
+
+            onRefetch()
+            // Call the onDrop function after the asynchronous operation is complete
+            onDrop(item);
+        } catch (error) {
+            console.error("Error while posting todo:", error);
+        }
+    };
     console.log(onDrop);
 
     return (
@@ -211,7 +231,7 @@ const TaskDashboard = () => {
                         </ul>
                     </div> */}
                     {/* Render the OngoingList component */}
-                    <OngoingList onDrop={allTask} />
+                    <OngoingList onDrop={allTask} onRefetch={refetch} />
 
                     {/* ... */}
 
