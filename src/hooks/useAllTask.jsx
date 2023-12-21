@@ -20,7 +20,7 @@ const useAllTask = () => {
             console.error('Error fetching data:', error);
         },
     })
-    console.log(allTask)
+    // console.log(allTask)
     return [allTask, refetch]
 };
 

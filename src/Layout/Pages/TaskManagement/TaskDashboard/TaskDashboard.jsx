@@ -20,19 +20,19 @@ const TaskDashboard = () => {
     const [ allOngoing, ongoingRefetch] = useAllOngoing()
     const [allTask, refetch] = useAllTask()
     const { user } = useContext(ProviderContext)
-    console.log(allTask)
+    // console.log(allTask)
 
-    console.log('new', user?.email);
+    // console.log('new', user?.email);
     const axiosSecure = useAxiosSecure()
 
     const { register, handleSubmit } = useForm()
     const onSubmit = async (data) => {
-        console.log(data)
+        // console.log(data)
         const TodoItem = {
             ...data,
             userEmail: user.email,
         };
-        console.log(TodoItem)
+        // console.log(TodoItem)
         // const TodoItem = {
 
         // }
@@ -42,7 +42,7 @@ const TaskDashboard = () => {
         if (todoRes.data.insertedId) {
             // show success\
             refetch()
-            console.log('success')
+            // console.log('success')
             toast.success('Task Added', {
                 position: "bottom-right",
                 autoClose: 3000,
@@ -76,7 +76,7 @@ const TaskDashboard = () => {
     const [{ isOver }, drop] = useDrop(() => ({
         accept: ["Ongoing", "Completed"], // Specify the accepted drag type
         drop: (item) => {
-            console.log("Dropped item:", item); // Log the dropped item
+            // console.log("Dropped item:", item); // Log the dropped item
             handleDrop(item)
             // onDrop(item);
         },
@@ -85,20 +85,21 @@ const TaskDashboard = () => {
         }),
     }
     ));
+    console.log(isOver, 'isOver');
 
 
     // Define an asynchronous function
     const handleDrop = async (item) => {
-        console.log("this is item", item._id); // Log the dropped item
+        // console.log("this is item", item._id); // Log the dropped item
         try {
             const res = await axiosSecure.delete(`/ongoingList/${item._id}`)
             const res3 = await axiosSecure.delete(`/completedList/${item._id}`)
             const ongoingRes = await axiosSecure.post('/todoList', item)
-            console.log(ongoingRes.data, 'success')
+            // console.log(ongoingRes.data, 'success')
             if (ongoingRes.data.insertedId) {
                 // show success\
                 refetch()
-                console.log(ongoingRes.data)
+                // console.log(ongoingRes.data)
                 toast.success('Task Added to ToDo list', {
                     position: "bottom-right",
                     autoClose: 3000,
@@ -110,7 +111,7 @@ const TaskDashboard = () => {
                     theme: "light",
                 });
             }
-            console.log(res.data);
+            // console.log(res.data);
             // Handle the result of the axios post if needed
             completedRefetch()
             ongoingRefetch()
@@ -150,7 +151,7 @@ const TaskDashboard = () => {
                         <ul className="shadow sm:rounded-md max-w-sm" ref={drag}>
                             {
                                 allTask?.map((task, index) => (
-                                    <DraggableTaskItem key={task._id} task={task} />
+                                    <DraggableTaskItem key={task._id} task={task} onRefetch={refetch}/>
                                 ))
                             }
                         </ul>

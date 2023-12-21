@@ -19,7 +19,7 @@ const useAllCompleted = () => {
             console.error('Error fetching data:', error);
         },
     })
-    console.log(allCompleted)
+    // console.log(allCompleted)
     return [allCompleted, completedRefetch]
 };
 

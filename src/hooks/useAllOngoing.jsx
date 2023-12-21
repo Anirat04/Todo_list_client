@@ -20,7 +20,7 @@ const useAllOngoing = () => {
             console.error('Error fetching data:', error);
         },
     })
-    console.log(allOngoing)
+    // console.log(allOngoing)
     return [allOngoing, ongoingRefetch]
 };
 
