@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     const navlinks = <>
-        <NavLink to="/task_management"><li>Task Management</li></NavLink>
+        <NavLink to="/taskManagement"><li>Task Management</li></NavLink>
         <NavLink><li>Blog</li></NavLink>
         <NavLink><li>Blog</li></NavLink>
         <NavLink><li>Blog</li></NavLink>

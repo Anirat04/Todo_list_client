@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import bannerSVG from '../../../../../assets/Business_SVG.svg'
 const Banner = () => {
     return (
@@ -12,7 +13,12 @@ const Banner = () => {
                             <span className="hidden md:inline lg:hidden">turpis pulvinar, est scelerisque ligula sem </span>
                         </p>
                         <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-                            <a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 text-gray-900">Let’s Explore</a>
+                            <Link
+                                to='/taskManagement'
+                                className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 text-gray-900"
+                            >
+                                Let’s Explore
+                            </Link>
                             <a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold border rounded border-gray-100">Malesuada</a>
                         </div>
                     </div>
