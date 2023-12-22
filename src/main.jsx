@@ -19,6 +19,7 @@ import {
 } from '@tanstack/react-query'
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import PrivateRoutes from './PrivateRoutes/PrivateRoutes.jsx';
 const queryClient = new QueryClient()
 
 
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/taskManagement",
-        element: <TaskDashboard></TaskDashboard>
+        element: <PrivateRoutes><TaskDashboard></TaskDashboard></PrivateRoutes>
       },
       {
         path: 'login',

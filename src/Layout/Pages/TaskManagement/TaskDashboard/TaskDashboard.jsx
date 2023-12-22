@@ -17,7 +17,7 @@ import useAllCompleted from "../../../../hooks/useAllCompleted";
 const TaskDashboard = () => {
 
     const [allCompleted, completedRefetch] = useAllCompleted()
-    const [ allOngoing, ongoingRefetch] = useAllOngoing()
+    const [allOngoing, ongoingRefetch] = useAllOngoing()
     const [allTask, refetch] = useAllTask()
     const { user } = useContext(ProviderContext)
     // console.log(allTask)
@@ -125,69 +125,123 @@ const TaskDashboard = () => {
 
     return (
         <div>
-            <ToastContainer />
-            <div className="bg-gray-300">
-                <div className="p-9">
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <input type="text" placeholder="Title" {...register("Title", {})} />
-                        <input type="text" placeholder="Description" {...register("Description", {})} />
-                        <input type="number" placeholder="Deadlines (Day)" {...register("Deadlines", {})} />
-                        <select {...register("Priority")}>
-                            <option value="Not Selected">Priority</option>
-                            <option value="Low">Low</option>
-                            <option value="Moderate">Moderate</option>
-                            <option value="High">High</option>
-                        </select>
-                        <input type="submit" />
-                    </form>
-                </div>
-                <div className="flex justify-evenly">
-                    {/* todolist */}
-                    <div ref={drop} className={`bg-slate-400 w-[384px] p-5 ${isOver ? 'bg-green-200' : ''}`}>
-                        <div>
-                            <h3 className="text-[22px] font-bold text-center mb-4">ToDo List</h3>
+            <div className="max-w-[1280px] mx-auto">
+                <ToastContainer />
+                <div className="">
+                    <div className="p-9 mb-[40px]">
+                        <div className="mb-[40px] ">
+                            <h3 className="text-[36px] font-bold text-center parisienne-font">Hey, {user.displayName}</h3>
+                            <p className="text-center">Here is your task management dashboard, <br />increase your productiveness</p>
                         </div>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <div className="grid grid-cols-2 gap-3">
+                                <label
+                                    htmlFor="Title"
+                                    className="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-[#e5412e] focus-within:ring-1 focus-within:ring-[#e5412e]"
+                                >
+                                    <input
+                                        type="text"
+                                        id="Title"
+                                        className="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 h-[40px] pl-3"
+                                        placeholder="Title"
+                                        {...register("Title", {})}
+                                    />
 
-                        <ul className="shadow sm:rounded-md max-w-sm" ref={drag}>
-                            {
-                                allTask?.map((task, index) => (
-                                    <DraggableTaskItem key={task._id} task={task} onRefetch={refetch}/>
-                                ))
-                            }
-                        </ul>
+                                    <span
+                                        className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs"
+                                    >
+                                        Title of the task
+                                    </span>
+                                </label>
 
+                                <label
+                                    htmlFor="Deadlines"
+                                    className="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-[#e5412e] focus-within:ring-1 focus-within:ring-[#e5412e]"
+                                >
+                                    <input
+                                        type="number"
+                                        id="Deadlines"
+                                        className="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 h-[40px] pl-3"
+                                        placeholder="Deadlines (Day)"
+                                        {...register("Deadlines", {})}
+                                    />
+
+                                    <span
+                                        className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs"
+                                    >
+                                        Deadline for your task
+                                    </span>
+                                </label>
+
+                                <label
+                                    htmlFor="Description"
+                                    className="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-[#e5412e] focus-within:ring-1 focus-within:ring-[#e5412e]"
+                                >
+                                    <input
+                                        type="text"
+                                        id="Description"
+                                        className="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 h-[40px] pl-3"
+                                        placeholder="Description"
+                                        {...register("Description", {})}
+                                    />
+
+                                    <span
+                                        className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs"
+                                    >
+                                        Description for the task
+                                    </span>
+                                </label>
+
+                                <label
+                                    htmlFor="Title"
+                                    className="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-[#e5412e] focus-within:ring-1 focus-within:ring-[#e5412e]"
+                                >
+                                    <select {...register("Priority")}>
+                                        <option value="Not Selected">Priority</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Moderate">Moderate</option>
+                                        <option value="High">High</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div className="flex justify-center pt-5">
+                                <input
+                                    type="submit"
+                                    value={'Add to the ToDo list'}
+                                    className="w-[320px] bg-[#E35345] p-2 rounded-md text-white  font-semibold text-[16px]"
+                                />
+                            </div>
+                        </form>
                     </div>
+                    <div className="flex justify-evenly">
+                        {/* todolist */}
+                        <div ref={drop} className={`w-[384px] rounded-lg p-5 ${isOver ? 'bg-green-500' : 'bg-[#E35345]'}`}>
+                            <div>
+                                <h3 className="text-[22px] font-bold text-center mb-4 text-white">ToDo List</h3>
+                            </div>
 
-                    {/* ongoing list */}
-                    {/* Render the OngoingList component */}
-                    <OngoingList onDrop={allTask} onRefetch={refetch} />
+                            <ul className="shadow sm:rounded-md max-w-sm" ref={drag}>
+                                {
+                                    allTask?.map((task, index) => (
+                                        <DraggableTaskItem key={task._id} task={task} onRefetch={refetch} />
+                                    ))
+                                }
+                            </ul>
 
-                    {/* ... */}
-
-                    {/* completed list */}
-                    {/* <div className="bg-slate-400 w-[384px] p-5">
-                        <div>
-                            <h3 className="text-[22px] font-bold text-center mb-4">Completed task</h3>
                         </div>
-                        <ul className="bg-white shadow overflow-hidden sm:rounded-md max-w-sm">
-                            <li>
-                                <div className="px-4 py-5 sm:px-6">
-                                    <div className="flex items-center justify-between">
-                                        <h3 className="text-lg leading-6 font-medium text-gray-900">Item 1</h3>
-                                        <p className="mt-1 max-w-2xl text-sm text-gray-500">Description for Item 1</p>
-                                    </div>
-                                    <div className="mt-4 flex items-center justify-between">
-                                        <p className="text-sm font-medium text-gray-500">Status: <span className="text-green-600">Active</span></p>
-                                        <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">Edit</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div> */}
-                    <CompletedList onDrop={allTask} onRefetch={refetch}></CompletedList>
+
+                        {/* ongoing list */}
+                        {/* Render the OngoingList component */}
+                        <OngoingList onDrop={allTask} onRefetch={refetch} />
+
+                        {/* ... */}
+
+                        {/* completed list */}
+                        <CompletedList onDrop={allTask} onRefetch={refetch}></CompletedList>
+                    </div>
                 </div>
-            </div>
-        </div >
+            </div >
+        </div>
     );
 };
 

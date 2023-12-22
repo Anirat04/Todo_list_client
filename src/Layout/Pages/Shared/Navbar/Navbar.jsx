@@ -1,14 +1,26 @@
 import './Navbar.css'
 import logoPNG from '../../../../assets/Todoist_logo.png'
 import { Link, NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { ProviderContext } from '../../../../Provider/Provider';
 
 const Navbar = () => {
+    const { user, logOut, loading } = useContext(ProviderContext)
     const navlinks = <>
-        <NavLink to="/taskManagement"><li>Task Management</li></NavLink>
-        <NavLink><li>Blog</li></NavLink>
+        <NavLink to="/taskManagement"><li>Dashboard</li></NavLink>
+        <NavLink to="/profile"><li>Profile</li></NavLink>
         <NavLink><li>Blog</li></NavLink>
         <NavLink><li>Blog</li></NavLink>
     </>
+
+    // this event handler is to log out users from the server
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                console.log('user logged out')
+            })
+            .catch(error => console.log('error logging out', error))
+    }
 
 
     return (
@@ -32,7 +44,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to='/'>
-                        <img src={logoPNG} className='w-[160px]'  alt="website_logo" />
+                        <img src={logoPNG} className='w-[160px]' alt="website_logo" />
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -41,7 +53,45 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    <div className="ml-[10px] border border-black rounded-full">
+                        {
+                            user ? <div className="bg-white flex flex-row-reverse items-center gap-3 rounded-full">
+                                <Link className="border border-black rounded-full bg-base-300">
+                                    <img className="max-w-[45px] min-h-[45px] rounded-full" src={user.photoURL ? user.photoURL : 'https://i.ibb.co/N7JQLnY/user-default-image.jpg'} alt="" />
+                                </Link>
+                                <p className="pl-[15px] font-bold">{user.displayName ? user.displayName : "userName_null"}</p>
+                            </div>
+                                :
+                                <div className=" bg-base-300 flex flex-row-reverse items-center gap-5 rounded-full">
+                                    <Link className="border border-black rounded-full bg-base-300">
+                                        <img className="max-w-[45px] min-h-[45px] rounded-full" src='https://i.ibb.co/N7JQLnY/user-default-image.jpg' alt="" />
+                                    </Link>
+                                    <p className="pl-[20px] font-bold">No User</p>
+                                </div>
+                        }
+                    </div>
+                    <div className="ml-[10px]">
+                        {
+                            loading ? <>
+                            </>
+                                : <>
+                                    {
+                                        user ? <>
+                                            <button
+                                                className="btn text-white bg-[#e5412e] rounded-lg hover:bg-transparent hover:border-[#e5412e] hover:text-[#e5412e]"
+                                                onClick={handleLogOut}
+                                            >
+                                                Logout
+                                            </button>
+                                        </>
+                                            : <Link to="/login">
+                                                <button className="btn text-white bg-[#e5412e] rounded-lg hover:bg-transparent hover:border-[#e5412e] hover:text-[#e5412e]">Login</button>
+                                            </Link>
+                                    }
+                                </>
+                        }
+
+                    </div>
                 </div>
             </div>
         </div>

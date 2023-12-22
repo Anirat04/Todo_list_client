@@ -136,29 +136,12 @@ const CompletedList = ({ onDrop, onRefetch }) => {
     };
 
     return (
-        <div ref={drop} className={`bg-slate-400 w-[384px] p-5 ${isOver ? 'bg-green-200' : ''}`}>
-            <h3 className="text-[22px] font-bold text-center mb-4">Completed task</h3>
+        <div ref={drop} className={`w-[384px] rounded-lg p-5 ${isOver ? 'bg-green-500' : 'bg-[#E35345]'}`}>
+            <h3 className="text-[22px] font-bold text-center mb-4 text-white">Completed task</h3>
             <ul ref={drop} className="shadow sm:rounded-md max-w-sm">
                 {
                     allCompleted.map(completed => (
-
                         <CompletedDrag key={completed._id} task={completed}></CompletedDrag>
-                        // <li key={ongoing._id}
-                        //     // ref={drag}
-                        //     // style={{ opacity: isDragging ? 0.5 : 1 }}
-                        //     className="mb-2 bg-white rounded-md">
-                        //     {/* Your task item content goes here */}
-                        //     <div className="px-4 py-5 sm:px-6">
-                        //         <div className="flex items-center justify-between">
-                        //             <h3 className="text-lg leading-6 font-medium text-gray-900">{ongoing.Title}</h3>
-                        //             <p className="mt-1 max-w-2xl text-sm text-gray-500">Description for Item 1</p>
-                        //         </div>
-                        //         <div className="mt-4 flex items-center justify-between">
-                        //             <p className="text-sm font-medium text-gray-500">Status: <span className="text-green-600">Active</span></p>
-                        //             <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">Edit</a>
-                        //         </div>
-                        //     </div>
-                        // </li>
                     ))
                 }
 
