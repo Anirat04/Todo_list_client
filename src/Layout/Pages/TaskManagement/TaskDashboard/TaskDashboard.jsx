@@ -125,7 +125,7 @@ const TaskDashboard = () => {
 
     return (
         <div>
-            <div className="max-w-[1280px] mx-auto">
+            <div className="max-w-[1280px] mx-auto min-h-screen">
                 <ToastContainer />
                 <div className="">
                     <div className="p-9 mb-[40px]">

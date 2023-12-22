@@ -5,7 +5,7 @@ import Lottie from "lottie-react";
 import bannerAnnimation from "./Animation - 1703198623422.json";
 const Banner = () => {
     return (
-        <div className='shadow-sm w-full'>
+        <div className='shadow-sm w-full bg-[#fcf5ee]'>
             <section className=" text-gray-900 max-w-[1280px] mx-auto">
                 <div className="container flex flex-col justify-center px-6 mx-auto sm:py-12 lg:pb-24 lg:flex-row lg:justify-between">
                     <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">

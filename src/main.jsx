@@ -20,6 +20,7 @@ import {
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import PrivateRoutes from './PrivateRoutes/PrivateRoutes.jsx';
+import Profile from './Layout/Pages/Profile/Profile.jsx';
 const queryClient = new QueryClient()
 
 
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <Register></Register>
+      },
+      {
+        path: 'profile',
+        element: <Profile></Profile>
       }
     ]
   },
