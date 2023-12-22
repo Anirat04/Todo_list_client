@@ -7,10 +7,9 @@ import { ProviderContext } from '../../../../Provider/Provider';
 const Navbar = () => {
     const { user, logOut, loading } = useContext(ProviderContext)
     const navlinks = <>
+        <NavLink to="/"><li>Home</li></NavLink>
         <NavLink to="/taskManagement"><li>Dashboard</li></NavLink>
         <NavLink to="/profile"><li>Profile</li></NavLink>
-        <NavLink><li>Blog</li></NavLink>
-        <NavLink><li>Blog</li></NavLink>
     </>
 
     // this event handler is to log out users from the server

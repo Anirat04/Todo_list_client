@@ -1,38 +1,38 @@
 import React from "react";
 import Lottie from "lottie-react";
-import devAnni from "./developerAnim.json"
+import devAnni from "./new_dev.json"
 import corporateAnni from "./corporate.json"
+import { Link } from "react-router-dom";
 
 const Benefit = () => {
     return (
-        <div className="bg-gray-50 pb-[100px]">
+        <div className="bg-gray-50 pb-[100px] pt-[60px]">
             <div className="max-w-[1280px] mx-auto">
+                <div>
+                    <h2 className="text-center text-[42px] font-bold text-[#e5412e]">Who are using Todoist</h2>
+                    <h3 className="text-center">Let's see who are using Todoist, to manage their daily task and how they are getting benefits</h3>
+                </div>
                 <section className="overflow-hidden bg-gray-50 sm:grid sm:grid-cols-2 sm:items-center">
-                    {/* <img
-                        alt="Violin"
-                        src="https://images.unsplash.com/photo-1484959014842-cd1d967a39cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                        className="h-full w-full object-cover sm:h-[calc(100%_-_2rem)] sm:self-end sm:rounded-ss-[30px] md:h-[calc(100%_-_4rem)] md:rounded-ss-[60px]"
-                    /> */}
                     <Lottie animationData={devAnni} loop={true} />
+                    {/* <Lottie animationData={corporateAnni} loop={true} /> */}
+
                     <div className="p-8 md:p-12 lg:px-16 lg:py-24">
                         <div className="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
-                            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit
+                            <h2 className="text-2xl font-semibold text-gray-900 md:text-3xl">
+                                Millions of developers choice to manage their task
                             </h2>
 
                             <p className="hidden text-gray-500 md:mt-4 md:block">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, egestas tempus tellus etiam
-                                sed. Quam a scelerisque amet ullamcorper eu enim et fermentum, augue. Aliquet amet volutpat
-                                quisque ut interdum tincidunt duis.
+                                Our platform is meticulously crafted to align with the unique needs of developers. With an intuitive interface and powerful features, we empower developers to streamline their workflow, helping them focus on what they do best – coding. Whether you're a solo developer or part of a collaborative team, our task management tools are designed to enhance productivity and reduce friction in your development process.
                             </p>
 
-                            <div className="mt-4 md:mt-8">
-                                <a
-                                    href="#"
-                                    className="inline-block rounded bg-emerald-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring focus:ring-yellow-400"
+                            <div className="mt-4 md:mt-[50px]">
+                                <Link
+                                    to='pricing'
+                                    className="px-8 py-3 text-lg font-semibold rounded bg-[#e5412e] text-white hover:bg-transparent hover:text-[#e5412e] hover:border hover:border-[#e5412e] transition ease-linear duration-300"
                                 >
-                                    Get Started Today
-                                </a>
+                                    Buy Developer plans
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -41,23 +41,21 @@ const Benefit = () => {
                 <section className="overflow-hidden bg-gray-50 sm:grid sm:grid-cols-2 sm:items-center">
                     <div className="p-8 md:p-12 lg:px-16 lg:py-24">
                         <div className="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
-                            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit
+                            <h2 className="text-2xl font-semibold text-gray-900 md:text-3xl">
+                                Elevate Your Corporate Productivity with Todoist
                             </h2>
 
                             <p className="hidden text-gray-500 md:mt-4 md:block">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, egestas tempus tellus etiam
-                                sed. Quam a scelerisque amet ullamcorper eu enim et fermentum, augue. Aliquet amet volutpat
-                                quisque ut interdum tincidunt duis.
+                                Thousands of corporate officer's firrst choice is Todoist. In the fast-paced world of corporate operations, effective planning is paramount. Our task management platform provides corporate professionals with a centralized hub to organize and plan tasks strategically. From project timelines to daily workflows, our intuitive tools empower professionals to stay ahead of deadlines and deliver exceptional results.
                             </p>
 
-                            <div className="mt-4 md:mt-8">
-                                <a
-                                    href="#"
-                                    className="inline-block rounded bg-emerald-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring focus:ring-yellow-400"
+                            <div className="mt-4 md:mt-[50px]">
+                                <Link
+                                    to='pricing'
+                                    className="px-8 py-3 text-lg font-semibold rounded bg-[#e5412e] text-white hover:bg-transparent hover:text-[#e5412e] hover:border hover:border-[#e5412e] transition ease-linear duration-300"
                                 >
-                                    Get Started Today
-                                </a>
+                                    Buy Corporate plans
+                                </Link>
                             </div>
                         </div>
                     </div>
