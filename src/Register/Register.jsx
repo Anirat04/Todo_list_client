@@ -64,7 +64,7 @@ const Register = () => {
     return (
         <div className="min-h-screen">
             <Helmet>
-                <title>ShareFood | Register
+                <title>Todoist | Register
                 </title>
             </Helmet>
             <div className="hero pt-[80px] pb-[100px]">

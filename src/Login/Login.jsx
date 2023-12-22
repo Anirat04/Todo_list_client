@@ -74,12 +74,12 @@ const Login = () => {
     return (
         <div className="min-h-screen pb-[100px]">
             <Helmet>
-                <title>Bery | Login
+                <title>Todoist | Login
                 </title>
             </Helmet>
             <div className="hero pt-[50px]">
-                <div className="hero-content">
-                    <Lottie animationData={LogReg}></Lottie>
+                <div className="hero-content p-0">
+                    <Lottie className="hidden md:flex" animationData={LogReg}></Lottie>
                     <div className="">
                         <h1 className="text-5xl font-bold text-center mb-[30px]">Login now!</h1>
                         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

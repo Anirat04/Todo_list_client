@@ -33,7 +33,7 @@ const Footer = () => {
                     </nav>
                     <form>
                         {/* <header className="footer-title">Newsletter</header> */}
-                        <fieldset className="form-control w-80">
+                        <fieldset className="form-control md:w-80">
                             <nav className='mb-[40px]'>
                                 <header className="footer-title">Social</header>
                                 <div className="grid grid-flow-col gap-4">
@@ -43,7 +43,7 @@ const Footer = () => {
                                     <FaTwitter className='text-[24px] hover:text-[#e5412e]'></FaTwitter>
                                 </div>
                             </nav>
-                            <div className="join">
+                            <div className="join max-w-[300px]">
                                 <label
                                     htmlFor="Title"
                                     className="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-[#e5412e] focus-within:ring-1 focus-within:ring-[#e5412e]"
@@ -51,7 +51,7 @@ const Footer = () => {
                                     <input
                                         type="text"
                                         id="Title"
-                                        className="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 h-[40px] pl-3"
+                                        className="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 h-[40px] pl-3 w-[150px]"
                                         placeholder="Title"
                                     />
 
