@@ -3,8 +3,11 @@ import Lottie from "lottie-react";
 import devAnni from "./new_dev.json"
 import corporateAnni from "./corporate.json"
 import { Link } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Benefit = () => {
+    AOS.init();
     return (
         <div className="bg-gray-50 pb-[100px] pt-[60px]">
             <div className="max-w-[1280px] mx-auto">
@@ -13,11 +16,13 @@ const Benefit = () => {
                     <h3 className="text-center">Let's see who are using Todoist, to manage their daily task and how they are getting benefits</h3>
                 </div>
                 <section className="overflow-hidden bg-gray-50 sm:grid sm:grid-cols-2 sm:items-center">
-                    <Lottie animationData={devAnni} loop={true} />
+                    <div data-aos="fade-up-right">
+                        <Lottie animationData={devAnni} loop={true} />
+                    </div>
                     {/* <Lottie animationData={corporateAnni} loop={true} /> */}
 
                     <div className="p-8 md:p-12 lg:px-16 lg:py-24">
-                        <div className="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
+                        <div data-aos="fade-up-right" className="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
                             <h2 className="text-2xl font-semibold text-gray-900 md:text-3xl">
                                 Millions of developers choice to manage their task
                             </h2>
@@ -40,7 +45,7 @@ const Benefit = () => {
                 </section>
                 <section className="overflow-hidden bg-gray-50 sm:grid sm:grid-cols-2 sm:items-center">
                     <div className="p-8 md:p-12 lg:px-16 lg:py-24">
-                        <div className="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
+                        <div data-aos="fade-up-right" className="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
                             <h2 className="text-2xl font-semibold text-gray-900 md:text-3xl">
                                 Elevate Your Corporate Productivity with Todoist
                             </h2>
@@ -60,7 +65,9 @@ const Benefit = () => {
                         </div>
                     </div>
 
-                    <Lottie animationData={corporateAnni} loop={true} />
+                    <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+                        <Lottie animationData={corporateAnni} loop={true} />
+                    </div>
                     {/* <img
                         alt="Violin"
                         src="https://images.unsplash.com/photo-1484959014842-cd1d967a39cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"

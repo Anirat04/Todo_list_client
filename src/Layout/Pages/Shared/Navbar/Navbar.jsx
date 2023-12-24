@@ -45,7 +45,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <div className="ml-[10px] border border-black rounded-full">
+                    <div className="ml-[10px] border border-black rounded-full hidden md:flex">
                         {
                             user ? <div className="bg-white flex flex-row-reverse items-center gap-3 rounded-full">
                                 <Link className="border border-black rounded-full bg-base-300">

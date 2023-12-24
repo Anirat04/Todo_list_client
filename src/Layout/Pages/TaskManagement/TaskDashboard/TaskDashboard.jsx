@@ -133,8 +133,8 @@ const TaskDashboard = () => {
                             <h3 className="text-[36px] font-bold text-center parisienne-font">Hey, {user.displayName}</h3>
                             <p className="text-center">Here is your task management dashboard, <br />increase your productiveness</p>
                         </div>
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <div className="grid grid-cols-2 gap-3">
+                        <form onSubmit={handleSubmit(onSubmit)} className="max-w-full">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
                                 <label
                                     htmlFor="Title"
                                     className="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-[#e5412e] focus-within:ring-1 focus-within:ring-[#e5412e]"
@@ -213,9 +213,9 @@ const TaskDashboard = () => {
                             </div>
                         </form>
                     </div>
-                    <div className="flex justify-evenly">
+                    <div className="flex items-center flex-col gap-3 px-[10px] md:justify-evenly md:flex-row md:items-start">
                         {/* todolist */}
-                        <div ref={drop} className={`w-[384px] rounded-lg p-5 ${isOver ? 'bg-green-500' : 'bg-[#E35345]'}`}>
+                        <div ref={drop} className={`w-full md:min-h-[230px] md:w-[384px] rounded-lg p-5 ${isOver ? 'bg-green-500' : 'bg-[#E35345]'}`}>
                             <div>
                                 <h3 className="text-[22px] font-bold text-center mb-4 text-white">ToDo List</h3>
                             </div>

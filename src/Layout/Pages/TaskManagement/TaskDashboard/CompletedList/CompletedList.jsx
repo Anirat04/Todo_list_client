@@ -136,7 +136,7 @@ const CompletedList = ({ onDrop, onRefetch }) => {
     };
 
     return (
-        <div ref={drop} className={`w-[384px] rounded-lg p-5 ${isOver ? 'bg-green-500' : 'bg-[#E35345]'}`}>
+        <div ref={drop} className={`w-full md:min-h-[230px] md:w-[384px] rounded-lg p-5 ${isOver ? 'bg-green-500' : 'bg-[#E35345]'}`}>
             <h3 className="text-[22px] font-bold text-center mb-4 text-white">Completed task</h3>
             <ul ref={drop} className="shadow sm:rounded-md max-w-sm">
                 {

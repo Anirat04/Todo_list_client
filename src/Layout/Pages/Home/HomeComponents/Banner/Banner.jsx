@@ -3,12 +3,15 @@ import bannerSVG from '../../../../../assets/Business_SVG.svg'
 import React from "react";
 import Lottie from "lottie-react";
 import bannerAnnimation from "./Animation - 1703198623422.json";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const Banner = () => {
+    AOS.init();
     return (
         <div className='shadow-sm w-full bg-[#fcf5ee]'>
             <section className=" text-gray-900 max-w-[1280px] mx-auto">
                 <div className="container flex flex-col justify-center px-6 mx-auto sm:py-12 lg:pb-24 lg:flex-row lg:justify-between">
-                    <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+                    <div data-aos="fade-right" className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
                         <h1 className="text-[48px] font-bold sm:text-[60px] md:leading-[80px]">Keep it all together
                             <span className="text-[#e5412e] pt-5"> with Todoist. </span>
                         </h1>
@@ -24,7 +27,7 @@ const Banner = () => {
                             </Link>
                         </div>
                     </div>
-                    <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+                    <div data-aos="zoom-out" className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
                         {/* <img src={bannerSVG} alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" /> */}
                         <Lottie animationData={bannerAnnimation} loop={true} />
                     </div>

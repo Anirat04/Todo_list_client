@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <>
             <div className='bg-[#fcf5ee] '>
-                <footer className="footer p-10 bg-[#fcf5ee] text-base-content max-w-[1280px] mx-auto">
+                <footer className="footer p-10 bg-[#fcf5ee] justify-between text-base-content max-w-[1280px] mx-auto">
                     <aside>
                         <img src={logoPNG} alt="" className='w-[180px]' />
                         <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
